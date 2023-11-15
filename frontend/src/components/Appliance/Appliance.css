@@ -1,0 +1,22 @@
+.appliance{
+    color: rgba(4, 4, 18, 0.966);
+    border: 10px;
+    border-radius: 5px;
+    border:solid black;
+    text-align:left;
+    padding-bottom: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    white-space: normal;
+    width: 50%;
+    margin:auto;
+    margin-top:10%;
+}
+
+.appliance_header{
+    display: block;
+}
+
+.cooker_checkbox label{
+    margin-inline-start: 0px !important;
+}

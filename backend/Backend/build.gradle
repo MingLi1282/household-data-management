@@ -1,0 +1,51 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.5'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'java'
+	id 'org.jruyi.thrift' version '0.4.2'
+	id 'com.diffplug.spotless' version '6.11.0'
+}
+
+group = 'com.cs6400.team048'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
+	implementation 'org.apache.thrift:libthrift:0.17.0'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+compileThrift {
+	thriftExecutable('thrift-0.17.0.exe')
+	sourceDir "$projectDir/src/main/thrift"
+}
+
+spotless {
+	java {
+		importOrder()
+		removeUnusedImports()
+		googleJavaFormat().reflowLongStrings()
+		endWithNewline()
+		indentWithSpaces(2)
+		trimTrailingWhitespace()
+		formatAnnotations()
+		target 'src/*/java/**/*.java'
+	}
+}
